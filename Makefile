@@ -2,6 +2,7 @@ CC=gcc
 BIN_DIR=bin/
 OBJ_DIR=obj/
 SRC_DIR=src/
+MLX_DIR=mlx/
 LIBFT_DIR=libft/
 INCLUDES=includes/
 CFLAGS=-Wall -Wextra -Werror -I $(INCLUDES)
@@ -16,8 +17,9 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 
 $(NAME): $(OBJS)
 	@if [ ! -d "./$(BIN_DIR)" ]; then mkdir $(dir $@); fi
+	$(MAKE) -C $(MLX_DIR)
 	$(MAKE) -C $(LIBFT_DIR)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L ./$(LIBFT_DIR)bin/ -lft
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L ./$(LIBFT_DIR)bin/ -lft -L ./$(MLX_DIR) -lmlx
 
 all: $(NAME)
 

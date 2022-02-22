@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
+/*   By: hubretec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 14:50:41 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/12 10:08:25 by hubretec         ###   ########.fr       */
+/*   Created: 2021/11/23 15:12:04 by hubretec          #+#    #+#             */
+/*   Updated: 2021/12/19 18:34:42 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 
-int	main(void)
+int	ft_putchar(char c)
 {
-	return (0);
+	return (write(1, &c, 1));
+}
+
+int	ft_putchar_fd(char c, int fd)
+{
+	return (write(fd, &c, 1));
 }

@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
+/*   By: hubretec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 14:50:41 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/12 10:08:25 by hubretec         ###   ########.fr       */
+/*   Created: 2021/11/23 13:22:41 by hubretec          #+#    #+#             */
+/*   Updated: 2021/11/25 15:25:41 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
+t_list	*ft_lstlast(t_list *lst)
 {
-	return (0);
+	t_list	*tmp;
+
+	tmp = lst;
+	if (!tmp)
+		return (0);
+	while (tmp->next)
+		tmp = tmp->next;
+	return (tmp);
 }

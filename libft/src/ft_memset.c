@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
+/*   By: hubretec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 14:50:41 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/12 10:08:25 by hubretec         ###   ########.fr       */
+/*   Created: 2021/11/23 14:08:15 by hubretec          #+#    #+#             */
+/*   Updated: 2021/12/19 19:57:01 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <stddef.h>
 
-int	main(void)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	return (0);
+	size_t	i;
+	char	*ptr;
+
+	i = 0;
+	ptr = s;
+	while (i < n)
+		ptr[i++] = c;
+	return (s);
 }

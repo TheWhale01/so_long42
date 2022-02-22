@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
+/*   By: hubretec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 14:50:41 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/12 10:08:25 by hubretec         ###   ########.fr       */
+/*   Created: 2021/11/23 15:11:38 by hubretec          #+#    #+#             */
+/*   Updated: 2021/12/19 19:56:47 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <string.h>
 
-int	main(void)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	return (0);
+	char		*tab_dest;
+	const char	*tab_src;
+
+	tab_src = (char *)src;
+	tab_dest = (char *)dest;
+	while (n--)
+		*(tab_dest++) = *(tab_src++);
+	return (dest);
 }

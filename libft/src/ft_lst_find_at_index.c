@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lst_find_at_index.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
+/*   By: hubretec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 14:50:41 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/12 10:08:25 by hubretec         ###   ########.fr       */
+/*   Created: 2022/01/28 12:15:37 by hubretec          #+#    #+#             */
+/*   Updated: 2022/01/28 18:34:37 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
+t_list	*ft_lst_find_at_index(t_list *lst, int index)
 {
-	return (0);
+	int		i;
+	t_list	*tmp;
+
+	i = -1;
+	tmp = lst;
+	while (tmp && ++i < index)
+		tmp = tmp->next;
+	return (tmp);
 }
