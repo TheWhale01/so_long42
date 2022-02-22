@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:03:26 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/22 15:14:43 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:35:56 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,22 @@ typedef struct s_assets
 typedef struct s_map
 {
 	int			width;
+	int			height;
 	char		**map;
 	t_assets	assets;
 }	t_map;
 
+int		tablen(char **tab);
+int		check_map(t_map map);
+int		is_in(char **tab, char c);
 
 void	check(int ac, char **av);
 void	init_assets(t_assets *assets);
+void	store_map(int fd, t_map *map);
+void	init(char *filename, t_map *map);
+
+void	*free_tab(char **tab);
+
+char	**add_line(char **tab, char *line);
 
 #endif
