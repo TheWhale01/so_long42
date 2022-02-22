@@ -5,6 +5,7 @@ SRC_DIR=src/
 MLX_DIR=mlx/
 LIBFT_DIR=libft/
 INCLUDES=includes/
+MLX_FLAGS=-L./$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz
 CFLAGS=-Wall -Wextra -Werror -I $(INCLUDES)
 NAME=$(BIN_DIR)so_long
 
@@ -19,7 +20,7 @@ $(NAME): $(OBJS)
 	@if [ ! -d "./$(BIN_DIR)" ]; then mkdir $(dir $@); fi
 	$(MAKE) -C $(MLX_DIR)
 	$(MAKE) -C $(LIBFT_DIR)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L ./$(LIBFT_DIR)bin/ -lft -L ./$(MLX_DIR) -lmlx
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L ./$(LIBFT_DIR)bin/ -lft $(MLX_FLAGS)
 
 all: $(NAME)
 
@@ -32,6 +33,7 @@ debug: CFLAGS=-Wall -Wextra -Werror -I $(INCLUDES) -g
 debug: $(NAME)
 
 clean:
+	$(MAKE) clean -C $(MLX_DIR)
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
