@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:56:18 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/22 19:02:36 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/23 14:47:29 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	check_map(t_map map)
 			return (0);
 		while (map.map[i][++j])
 		{
-			if ((!(i % map.height) && map.map[i][j] != map.assets.wall) ||
-				(!(j % map.width) && map.map[i][j] != map.assets.wall))
+			if ((!(i % map.height) || !(j % map.width))
+				&& map.map[i][j] != map.assets.wall)
 				return (0);
 			if (map.map[i][j] != map.assets.collectible && map.map[i][j]
 				!= map.assets.empty && map.map[i][j] != map.assets.exit
@@ -57,13 +57,11 @@ int	check_map(t_map map)
 	return (1);
 }
 
-void	check(int ac, char **av)
+void	check(int ac, char **av, t_map *map)
 {
-	char	*start;
-
 	if (ac != 2)
-		exit(EXIT_FAILURE);
-	start = ft_strstr(av[1], ".ber");
-	if (!start || ft_strcmp(".ber", start))
-		exit(EXIT_FAILURE);
+		exit_msg("Wrong number of args.");
+	if (!ft_strnstr(&av[1][ft_strlen(av[1]) - 4], ".ber", 4))
+		exit_msg("Invalid filename : <filename>.ber");
+	init(av[1], map);
 }

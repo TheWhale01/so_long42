@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:50:41 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/22 19:05:15 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/23 14:46:26 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int	main(int ac, char **av)
 	int		i;
 	t_map	map;
 
-	check(ac, av);
-	init(av[1], &map);
+	check(ac, av, &map);
 	i = -1;
 	while (map.map[++i])
 	{
