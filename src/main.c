@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:50:41 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 12:06:17 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/24 12:37:24 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	main(int ac, char **av)
 	check(ac, av, &(game));
 	mlx_loop(game.mlx);
 	free_tab(game.map.map);
-	free_game(game);
+	free_game(&game);
 	return (0);
 }

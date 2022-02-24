@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:56:18 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 12:02:58 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/24 13:32:57 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	check_map(t_map map)
 			return (0);
 		while (map.map[i][++j])
 		{
-			if ((!(i % map.height) || !(j % map.width))
+			if ((!(i % (map.height - 1)) || !(j % (map.width - 1)))
 				&& map.map[i][j] != map.assets.wall)
 				return (0);
 			if (map.map[i][j] != map.assets.collectible && map.map[i][j]
@@ -59,9 +59,11 @@ int	check_map(t_map map)
 
 void	check(int ac, char **av, t_game *game)
 {
+	game->mlx = NULL;
+	game->mlx_win = NULL;
 	if (ac != 2)
-		exit_msg("Wrong number of args.");
+		exit_msg("Wrong number of args.", game);
 	if (!ft_strnstr(&av[1][ft_strlen(av[1]) - 4], ".ber", 4))
-		exit_msg("Invalid filename : <filename>.ber");
+		exit_msg("Invalid filename : <filename>.ber", game);
 	init(av[1], game);
 }

@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:03:26 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 12:16:48 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/24 12:26:40 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ int		tablen(char **tab);
 int		check_map(t_map map);
 int		is_in(char **tab, char c);
 
-void	exit_msg(char *str);
 void	init_assets(t_assets *assets);
 void	store_map(int fd, t_map *map);
+void	exit_msg(char *str, t_game *game);
 void	init(char *filename, t_game *game);
 void	check(int ac, char **av, t_game *game);
 
 void	*free_tab(char **tab);
-void	*free_game(t_game game);
 void	*load_win(t_game *game);
+void	*free_game(t_game *game);
 
 char	**add_line(char **tab, char *line);
 
