@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:56:18 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 13:32:57 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/24 13:37:11 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	check(int ac, char **av, t_game *game)
 {
 	game->mlx = NULL;
 	game->mlx_win = NULL;
+	game->map.map = NULL;
 	if (ac != 2)
 		exit_msg("Wrong number of args.", game);
 	if (!ft_strnstr(&av[1][ft_strlen(av[1]) - 4], ".ber", 4))

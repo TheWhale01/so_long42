@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 16:52:27 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 12:30:03 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/24 13:38:27 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ void	*free_game(t_game *game)
 {
 	free_tab(game->map.map);
 	if (game->mlx_win)
-	{
-		mlx_clear_window(game->mlx, game->mlx_win);
 		mlx_destroy_window(game->mlx, game->mlx_win);
-	}
 	if (game->mlx)
 		mlx_destroy_display(game->mlx);
 	free(game->mlx);
