@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:09:42 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 12:04:25 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/24 12:21:13 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,17 @@ void	store_map(int fd, t_map *map)
 	}
 }
 
+void	init_game(t_game *game)
+{
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		exit_msg("Could not load mlx.");
+	game->img.size = 64;
+	game->mlx_win = mlx_new_window(game->mlx,
+			game->img.size * game->map.width, game->img.size * game->map.height,
+			"so_long");
+}
+
 void	init(char *filename, t_game *game)
 {
 	int	fd;
@@ -74,8 +85,7 @@ void	init(char *filename, t_game *game)
 		free_tab(game->map.map);
 		exit_msg("Invalid map.");
 	}
-	game->mlx = mlx_init();
-	game->mlx_win = mlx_new_window(game->mlx, 640, 640, "test");
+	init_game(game);
 }
 
 void	init_assets(t_assets *assets)

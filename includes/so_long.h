@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:03:26 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 12:00:31 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/24 12:16:48 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	check(int ac, char **av, t_game *game);
 
 void	*free_tab(char **tab);
 void	*free_game(t_game game);
+void	*load_win(t_game *game);
 
 char	**add_line(char **tab, char *line);
 
