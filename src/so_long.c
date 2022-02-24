@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 14:50:41 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 14:34:13 by hubretec         ###   ########.fr       */
+/*   Created: 2022/02/24 13:49:02 by hubretec          #+#    #+#             */
+/*   Updated: 2022/02/24 14:34:44 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "mlx.h"
 #include "libft.h"
 #include "so_long.h"
 
-int	main(int ac, char **av)
+int	quit_game(t_game *game)
 {
-	t_game	game;
+	exit_msg(EXIT_SUCCESS, NULL, game);
+	return (1);
+}
 
-	check(ac, av, &(game));
-	mlx_hook(game.mlx_win, 2, (1L << 0), do_event, &game);
-	mlx_hook(game.mlx_win, 17, (1L << 0), quit_game, &game);
-	mlx_loop(game.mlx);
-	free_tab(game.map.map);
-	free_game(&game);
-	return (0);
+int	do_event(int keycode, t_game *game)
+{
+	if (keycode == 65307)
+		exit_msg(EXIT_SUCCESS, NULL, game);
+	return (1);
 }

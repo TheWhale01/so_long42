@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 16:52:27 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 13:38:27 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/24 14:34:01 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 #include "libft.h"
 #include "so_long.h"
 
-void	exit_msg(char *str, t_game *game)
+void	exit_msg(int exit_code, char *str, t_game *game)
 {
 	if (str)
 		ft_putendl_fd(str, STDERR);
 	free_game(game);
-	exit(EXIT_FAILURE);
+	exit(exit_code);
 }
 
 void	*free_game(t_game *game)

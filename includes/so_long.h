@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:03:26 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 12:26:40 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/24 14:33:52 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,15 @@ typedef struct s_game
 
 int		tablen(char **tab);
 int		check_map(t_map map);
+int		quit_game(t_game *game);
 int		is_in(char **tab, char c);
+int		do_event(int keycode, t_game *game);
 
 void	init_assets(t_assets *assets);
 void	store_map(int fd, t_map *map);
-void	exit_msg(char *str, t_game *game);
 void	init(char *filename, t_game *game);
 void	check(int ac, char **av, t_game *game);
+void	exit_msg(int exit_code, char *str, t_game *game);
 
 void	*free_tab(char **tab);
 void	*load_win(t_game *game);

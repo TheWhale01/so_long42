@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:09:42 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 12:27:29 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/24 14:07:00 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	init_game(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		exit_msg("Could not load mlx.", game);
+		exit_msg(EXIT_FAILURE, "Could not load mlx.", game);
 	game->img.size = 64;
 	game->mlx_win = mlx_new_window(game->mlx,
 			game->img.size * game->map.width, game->img.size * game->map.height,
@@ -76,12 +76,12 @@ void	init(char *filename, t_game *game)
 	game->map.width = 0;
 	fd = open(filename, O_RDWR | __O_NOFOLLOW);
 	if (fd == -1)
-		exit_msg("Could not open the file.", game);
+		exit_msg(EXIT_FAILURE, "Could not open the file.", game);
 	init_assets(&(game->map.assets));
 	store_map(fd, &(game->map));
 	game->map.height = tablen(game->map.map);
 	if (!check_map(game->map))
-		exit_msg("Invalid map.", game);
+		exit_msg(EXIT_FAILURE, "Invalid map.", game);
 	init_game(game);
 }
 
