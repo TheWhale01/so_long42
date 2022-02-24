@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 13:49:02 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 14:34:44 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/24 16:04:49 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,36 @@ int	do_event(int keycode, t_game *game)
 	if (keycode == 65307)
 		exit_msg(EXIT_SUCCESS, NULL, game);
 	return (1);
+}
+
+void	display_img(char *filename, t_game *game)
+{
+	void	*img;
+
+	img = mlx_xpm_file_to_image(game, filename,
+			&(game->img.width), &(game->img.height));
+	free(filename);
+}
+
+void	display_map(char *dir, t_game *game)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	while (game->map.map[++i])
+	{
+		j = -1;
+		while (game->map.map[i][++j])
+		{
+			if (game->map.map[i][j] == game->map.assets.wall)
+				display_img(ft_strjoin(dir, "wall.xpm"), game);
+			else if (game->map.map[i][j] == game->map.assets.empty)
+				display_img(ft_strjoin(dir, "clay.xpm"), game);
+			else if (game->map.map[i][j] == game->map.assets.collectible)
+				display_img(ft_strjoin(dir, "amethyst.xpm"), game);
+			else if (game->map.map[i][j] == game->map.assets.exit);
+				display_img
+		}
+	}
 }

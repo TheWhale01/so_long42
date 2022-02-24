@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:09:42 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 14:07:00 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/24 15:21:27 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**add_line(char **tab, char *line)
 		new[i] = ft_strdup(tab[i]);
 		free(tab[i++]);
 	}
-	new[i++] = ft_strdup(line);
+	new[i++] = line;
 	new[i] = NULL;
 	free(tab);
 	return (new);
@@ -54,7 +54,6 @@ void	store_map(int fd, t_map *map)
 		map->map = add_line(map->map, line);
 		if (!map->width)
 			map->width = ft_strlen(line);
-		free(line);
 	}
 }
 
@@ -63,10 +62,13 @@ void	init_game(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		exit_msg(EXIT_FAILURE, "Could not load mlx.", game);
-	game->img.size = 64;
+	game->img.width = 64;
+	game->img.height = 64;
+	game->img.pos.x = 0;
+	game->img.pos.y = 0;
 	game->mlx_win = mlx_new_window(game->mlx,
-			game->img.size * game->map.width, game->img.size * game->map.height,
-			"so_long");
+			game->img.width * game->map.width,
+			game->img.height * game->map.height, "so_long");
 }
 
 void	init(char *filename, t_game *game)
