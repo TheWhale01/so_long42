@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:56:18 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/23 14:47:29 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/24 12:02:58 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ int	check_map(t_map map)
 	return (1);
 }
 
-void	check(int ac, char **av, t_map *map)
+void	check(int ac, char **av, t_game *game)
 {
 	if (ac != 2)
 		exit_msg("Wrong number of args.");
 	if (!ft_strnstr(&av[1][ft_strlen(av[1]) - 4], ".ber", 4))
 		exit_msg("Invalid filename : <filename>.ber");
-	init(av[1], map);
+	init(av[1], game);
 }

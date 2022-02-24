@@ -6,18 +6,29 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 16:52:27 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/23 14:45:51 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/02/24 12:05:29 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "mlx.h"
 #include "libft.h"
+#include "so_long.h"
 
 void	exit_msg(char *str)
 {
 	if (str)
 		ft_putendl_fd(str, STDERR);
 	exit(EXIT_FAILURE);
+}
+
+void	*free_game(t_game game)
+{
+	mlx_clear_window(game.mlx, game.mlx_win);
+	mlx_destroy_window(game.mlx, game.mlx_win);
+	mlx_destroy_display(game.mlx);
+	free(game.mlx);
+	return (NULL);
 }
 
 void	*free_tab(char **tab)
