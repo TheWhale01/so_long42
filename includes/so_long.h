@@ -57,10 +57,10 @@ int		quit_game(t_game *game);
 int		is_in(char **tab, char c);
 int		do_event(int keycode, t_game *game);
 
+void	display_map(t_game *game);
 void	init_assets(t_assets *assets);
 void	store_map(int fd, t_map *map);
 void	init(char *filename, t_game *game);
-void	display_map(char *dir, t_game *game);
 void	check(int ac, char **av, t_game *game);
 void	exit_msg(int exit_code, char *str, t_game *game);
 

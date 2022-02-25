@@ -34,10 +34,10 @@ void	display_img(char *filename, t_game *game)
 
 	img = mlx_xpm_file_to_image(game, filename,
 			&(game->img.width), &(game->img.height));
-	free(filename);
+	(void)img;
 }
 
-void	display_map(char *dir, t_game *game)
+void	display_map(t_game *game)
 {
 	int		i;
 	int		j;
@@ -49,13 +49,11 @@ void	display_map(char *dir, t_game *game)
 		while (game->map.map[i][++j])
 		{
 			if (game->map.map[i][j] == game->map.assets.wall)
-				display_img(ft_strjoin(dir, "wall.xpm"), game);
+				 display_img("./assets/wall.xpm", game);
 			else if (game->map.map[i][j] == game->map.assets.empty)
-				display_img(ft_strjoin(dir, "clay.xpm"), game);
+				display_img("./assets/clay.xpm", game);
 			else if (game->map.map[i][j] == game->map.assets.collectible)
-				display_img(ft_strjoin(dir, "amethyst.xpm"), game);
-			else if (game->map.map[i][j] == game->map.assets.exit);
-				display_img
+				display_img("./assets/amethyst.xpm", game);
 		}
 	}
 }
