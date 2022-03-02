@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:09:42 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 15:21:27 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:14:01 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,6 @@
 #include "mlx.h"
 #include "libft.h"
 #include "so_long.h"
-
-char	**add_line(char **tab, char *line)
-{
-	int		i;
-	int		len;
-	char	**new;
-
-	new = malloc(sizeof(char *) * (tablen(tab) + 2));
-	if (!new)
-		return (NULL);
-	i = 0;
-	len = ft_strlen(line);
-	if (line[len - 1] == '\n')
-		line[len - 1] = '\0';
-	while (tab && tab[i])
-	{
-		new[i] = ft_strdup(tab[i]);
-		free(tab[i++]);
-	}
-	new[i++] = line;
-	new[i] = NULL;
-	free(tab);
-	return (new);
-}
 
 void	store_map(int fd, t_map *map)
 {
@@ -62,13 +38,38 @@ void	init_game(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		exit_msg(EXIT_FAILURE, "Could not load mlx.", game);
-	game->img.width = 64;
-	game->img.height = 64;
-	game->img.pos.x = 0;
-	game->img.pos.y = 0;
+	game->map.assets.pos.x = 0;
+	game->map.assets.pos.y = 0;
 	game->mlx_win = mlx_new_window(game->mlx,
-			game->img.width * game->map.width,
-			game->img.height * game->map.height, "so_long");
+			game->map.assets.size * game->map.width,
+			game->map.assets.size * game->map.height, "so_long");
+}
+
+void	init_player(t_game *game)
+{
+	game->player.img = NULL;
+	game->player.value = 'P';
+	game->player.path_back = "assets/player_B.xpm";
+	game->player.path_front = "assets/player_F.xpm";
+	game->player.path_left = "assets/player_L.xpm";
+	game->player.path_right = "assets/player_R.xpm";
+}
+
+void	init_assets(t_assets *assets)
+{
+	assets->size = 64;
+	assets->exit.img = NULL;
+	assets->exit.value = 'E';
+	assets->exit.path = "assets/wall.xpm";
+	assets->wall.img = NULL;
+	assets->wall.value = '1';
+	assets->wall.path = "assets/wall_2.xpm";
+	assets->empty.img = NULL;
+	assets->empty.value = '0';
+	assets->empty.path = "assets/clay.xpm";
+	assets->collectible.img = NULL;
+	assets->collectible.value = 'C';
+	assets->collectible.path = "assets/amethyst.xpm";
 }
 
 void	init(char *filename, t_game *game)
@@ -80,18 +81,10 @@ void	init(char *filename, t_game *game)
 	if (fd == -1)
 		exit_msg(EXIT_FAILURE, "Could not open the file.", game);
 	init_assets(&(game->map.assets));
+	init_player(game);
 	store_map(fd, &(game->map));
 	game->map.height = tablen(game->map.map);
-	if (!check_map(game->map))
+	if (!check_map(*game))
 		exit_msg(EXIT_FAILURE, "Invalid map.", game);
 	init_game(game);
-}
-
-void	init_assets(t_assets *assets)
-{
-	assets->exit = 'E';
-	assets->wall = '1';
-	assets->empty = '0';
-	assets->start = 'P';
-	assets->collectible = 'C';
 }

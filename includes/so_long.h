@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:03:26 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 16:04:48 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:28:07 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,32 @@ typedef struct s_pos
 	int	y;
 }	t_pos;
 
+typedef struct s_img
+{
+	char	value;
+	char	*path;
+	void	*img;
+}	t_img;
+
+typedef struct s_player
+{
+	char	value;
+	void	*img;
+	char	*path_back;
+	char	*path_left;
+	char	*path_right;
+	char	*path_front;
+	t_pos	pos;
+}	t_player;
+
 typedef struct s_assets
 {
-	char	exit;
-	char	wall;
-	char	empty;
-	char	start;
-	char	collectible;
+	int		size;
+	t_pos	pos;
+	t_img	exit;
+	t_img	wall;
+	t_img	empty;
+	t_img	collectible;
 }	t_assets;
 
 typedef struct s_map
@@ -36,29 +55,21 @@ typedef struct s_map
 	t_assets	assets;
 }	t_map;
 
-typedef struct s_img
-{
-	int		width;
-	int		height;
-	t_pos	pos;
-}	t_img;
-
 typedef struct s_game
 {
-	t_map	map;
-	t_img	img;
-	void	*mlx;
-	void	*mlx_win;
+	void		*mlx;
+	void		*mlx_win;
+	t_map		map;
+	t_player	player;
 }	t_game;
 
 int		tablen(char **tab);
-int		check_map(t_map map);
+int		check_map(t_game game);
 int		quit_game(t_game *game);
 int		is_in(char **tab, char c);
 int		do_event(int keycode, t_game *game);
 
 void	display_map(t_game *game);
-void	init_assets(t_assets *assets);
 void	store_map(int fd, t_map *map);
 void	init(char *filename, t_game *game);
 void	check(int ac, char **av, t_game *game);
