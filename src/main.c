@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 	t_game	game;
 
 	check(ac, av, &(game));
-	//display_map(&game);
+	display_map(&game);
 	mlx_hook(game.mlx_win, 2, (1L << 0), do_event, &game);
 	mlx_hook(game.mlx_win, 17, (1L << 0), quit_game, &game);
 	mlx_loop(game.mlx);
