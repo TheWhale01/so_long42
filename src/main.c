@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:50:41 by hubretec          #+#    #+#             */
-/*   Updated: 2022/02/24 15:06:49 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/02 11:34:03 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 	t_game	game;
 
 	check(ac, av, &(game));
-	display_map(&game);
+	//display_map(&game);
 	mlx_hook(game.mlx_win, 2, (1L << 0), do_event, &game);
 	mlx_hook(game.mlx_win, 17, (1L << 0), quit_game, &game);
 	mlx_loop(game.mlx);
