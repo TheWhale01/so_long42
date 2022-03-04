@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:03:26 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/02 15:28:07 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/04 15:12:13 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ typedef struct s_img
 typedef struct s_player
 {
 	char	value;
-	void	*img;
+	void	*img_back;
+	void	*img_left;
+	void	*img_right;
+	void	*img_front;
 	char	*path_back;
 	char	*path_left;
 	char	*path_right;
@@ -64,11 +67,12 @@ typedef struct s_game
 }	t_game;
 
 int		tablen(char **tab);
-int		check_map(t_game game);
 int		quit_game(t_game *game);
 int		is_in(char **tab, char c);
 int		do_event(int keycode, t_game *game);
 
+void	check_map(t_game *game);
+void	free_game(t_game *game);
 void	display_map(t_game *game);
 void	store_map(int fd, t_map *map);
 void	init(char *filename, t_game *game);
@@ -77,7 +81,6 @@ void	exit_msg(int exit_code, char *str, t_game *game);
 
 void	*free_tab(char **tab);
 void	*load_win(t_game *game);
-void	*free_game(t_game *game);
 
 char	**add_line(char **tab, char *line);
 

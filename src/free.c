@@ -6,32 +6,43 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:48:28 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/02 15:50:20 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/04 14:55:21 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "mlx.h"
+#include "libft.h"
 #include "so_long.h"
 
-void	*free_img(t_game *game)
+void	safe_destroy(char *str, void *mlx, void *ptr)
 {
-	mlx_destroy_image(game->mlx, game->map.assets.collectible.img);
-	mlx_destroy_image(game->mlx, game->map.assets.empty.img);
-	mlx_destroy_image(game->mlx, game->map.assets.exit.img);
-	mlx_destroy_image(game->mlx, game->map.assets.wall.img);
-	mlx_destroy_image(game->mlx, game->player.img);
-	return (NULL);
+
+	if (!ft_strcmp(str, "window") && mlx && ptr)
+		mlx_destroy_window(mlx, ptr);
+	else if (!ft_strcmp(str, "display") && mlx)
+		mlx_destroy_display(mlx);
+	else if (!ft_strcmp(str, "image") && mlx && ptr)
+		mlx_destroy_image(mlx, ptr);
 }
 
-void	*free_game(t_game *game)
+void	free_img(t_game *game)
+{
+	safe_destroy("image", game->mlx, game->player.img_back);
+	safe_destroy("image", game->mlx, game->player.img_front);
+	safe_destroy("image", game->mlx, game->player.img_left);
+	safe_destroy("image", game->mlx, game->player.img_right);
+	safe_destroy("image", game->mlx, game->map.assets.collectible.img);
+	safe_destroy("image", game->mlx, game->map.assets.empty.img);
+	safe_destroy("image", game->mlx, game->map.assets.exit.img);
+	safe_destroy("image", game->mlx, game->map.assets.wall.img);
+}
+
+void	free_game(t_game *game)
 {
 	free_tab(game->map.map);
 	free_img(game);
-	if (game->mlx_win)
-		mlx_destroy_window(game->mlx, game->mlx_win);
-	if (game->mlx)
-		mlx_destroy_display(game->mlx);
+	safe_destroy("window", game->mlx, game->mlx_win);
+	safe_destroy("display", game->mlx, NULL);
 	free(game->mlx);
-	return (NULL);
 }

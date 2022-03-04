@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:09:42 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/02 15:14:01 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/04 15:20:39 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,24 @@
 #include "libft.h"
 #include "so_long.h"
 
-void	store_map(int fd, t_map *map)
+void	set_starting_pos(t_game *game)
 {
-	char	*line;
+	int	i;
+	int	j;
 
-	map->map = NULL;
-	while (1)
+	i = -1;
+	while (game->map.map[++i])
 	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		map->map = add_line(map->map, line);
-		if (!map->width)
-			map->width = ft_strlen(line);
+		j = -1;
+		while (game->map.map[i][++j])
+		{
+			if (game->map.map[i][j] == game->player.value)
+			{
+				game->player.pos.x = j * game->map.assets.size;
+				game->player.pos.y = i * game->map.assets.size;
+				break ;
+			}
+		}			
 	}
 }
 
@@ -47,12 +52,16 @@ void	init_game(t_game *game)
 
 void	init_player(t_game *game)
 {
-	game->player.img = NULL;
+	game->player.img_back = NULL;
+	game->player.img_front = NULL;
+	game->player.img_left = NULL;
+	game->player.img_right = NULL;
 	game->player.value = 'P';
 	game->player.path_back = "assets/player_B.xpm";
 	game->player.path_front = "assets/player_F.xpm";
 	game->player.path_left = "assets/player_L.xpm";
 	game->player.path_right = "assets/player_R.xpm";
+	set_starting_pos(game);
 }
 
 void	init_assets(t_assets *assets)
@@ -80,11 +89,10 @@ void	init(char *filename, t_game *game)
 	fd = open(filename, O_RDWR | __O_NOFOLLOW);
 	if (fd == -1)
 		exit_msg(EXIT_FAILURE, "Could not open the file.", game);
+	store_map(fd, &(game->map));
 	init_assets(&(game->map.assets));
 	init_player(game);
-	store_map(fd, &(game->map));
 	game->map.height = tablen(game->map.map);
-	if (!check_map(*game))
-		exit_msg(EXIT_FAILURE, "Invalid map.", game);
+	check_map(game);
 	init_game(game);
 }
