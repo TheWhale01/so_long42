@@ -6,49 +6,31 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:19:59 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/04 15:23:41 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/07 11:42:21 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <stdlib.h>
 #include "mlx.h"
 #include "libft.h"
 #include "so_long.h"
 
-void	store_map(int fd, t_map *map)
-{
-	char	*line;
-
-	map->map = NULL;
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		map->map = add_line(map->map, line);
-		if (!map->width)
-			map->width = ft_strlen(line);
-	}
-	close(fd);
-}
-
 void	create_img_ptr_player(t_game *game)
 {
-	game->player.img_front = mlx_xpm_file_to_image(game->mlx,
-			game->player.path_front, &(game->map.assets.size),
+	game->player.front.img = mlx_xpm_file_to_image(game->mlx,
+			game->player.front.path, &(game->map.assets.size),
 			&(game->map.assets.size));
-	game->player.img_back = mlx_xpm_file_to_image(game->mlx,
-			game->player.path_back, &(game->map.assets.size),
+	game->player.back.img = mlx_xpm_file_to_image(game->mlx,
+			game->player.back.path, &(game->map.assets.size),
 			&(game->map.assets.size));
-	game->player.img_left = mlx_xpm_file_to_image(game->mlx,
-			game->player.path_left, &(game->map.assets.size),
+	game->player.left.img = mlx_xpm_file_to_image(game->mlx,
+			game->player.left.path, &(game->map.assets.size),
 			&(game->map.assets.size));
-	game->player.img_right = mlx_xpm_file_to_image(game->mlx,
-			game->player.path_right, &(game->map.assets.size),
+	game->player.right.img = mlx_xpm_file_to_image(game->mlx,
+			game->player.right.path, &(game->map.assets.size),
 			&(game->map.assets.size));
-	if (!game->player.img_back || !game->player.img_front
-		|| !game->player.img_left || !game->player.img_right)
+	if (!game->player.back.img || !game->player.front.img
+		|| !game->player.left.img || !game->player.right.img)
 		exit_msg(EXIT_FAILURE, "Could not load player textures.", game);
 }
 
@@ -105,7 +87,7 @@ void	display_map(t_game *game)
 			else if (game->map.map[i][j] == game->map.assets.wall.value)
 				display_img(game->map.assets.wall.img, game);
 			else if (game->map.map[i][j] == game->player.value)
-				display_img(game->player.img_front, game);
+				display_img(game->player.front.img, game);
 		}
 	}
 }

@@ -6,15 +6,33 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:56:18 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/04 15:11:48 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/07 11:28:11 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include "mlx.h"
 #include "libft.h"
 #include "so_long.h"
+
+void	store_map(int fd, t_map *map)
+{
+	char	*line;
+
+	map->map = NULL;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		map->map = add_line(map->map, line);
+		if (!map->width)
+			map->width = ft_strlen(line);
+	}
+	close(fd);
+}
 
 void	check_assets(t_game *game)
 {

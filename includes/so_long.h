@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:03:26 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/04 15:12:13 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/07 11:18:30 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ typedef struct s_pos
 
 typedef struct s_img
 {
+	int		bpp;
+	int		endian;
+	int		line_len;
 	char	value;
+	char	*addr;
 	char	*path;
 	void	*img;
 }	t_img;
@@ -29,14 +33,10 @@ typedef struct s_img
 typedef struct s_player
 {
 	char	value;
-	void	*img_back;
-	void	*img_left;
-	void	*img_right;
-	void	*img_front;
-	char	*path_back;
-	char	*path_left;
-	char	*path_right;
-	char	*path_front;
+	t_img	back;
+	t_img	left;
+	t_img	right;
+	t_img	front;
 	t_pos	pos;
 }	t_player;
 
