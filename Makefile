@@ -9,7 +9,7 @@ MLX_FLAGS=-L./$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz
 CFLAGS=-Wall -Wextra -Werror -I $(INCLUDES)
 NAME=$(BIN_DIR)so_long
 
-CFILES=$(addprefix $(SRC_DIR), main.c check.c utils.c init.c so_long.c map.c free.c)
+CFILES=$(addprefix $(SRC_DIR), main.c check.c utils.c init.c so_long.c map.c free.c paint.c)
 OBJS=$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(CFILES))
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
