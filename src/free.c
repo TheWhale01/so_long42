@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:48:28 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/07 10:57:59 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:21:31 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	safe_destroy(char *str, void *mlx, void *ptr)
 void	free_img(t_game *game)
 {
 	safe_destroy("image", game->mlx, game->player.back.img);
-	safe_destroy("image", game->mlx, game->player.front.img);
 	safe_destroy("image", game->mlx, game->player.left.img);
 	safe_destroy("image", game->mlx, game->player.right.img);
 	safe_destroy("image", game->mlx, game->map.assets.collectible.img);

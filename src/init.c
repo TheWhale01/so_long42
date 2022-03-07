@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:09:42 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/07 14:03:18 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:09:13 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,28 +50,26 @@ void	init_game(t_game *game)
 			game->map.assets.size * game->map.height, "so_long");
 }
 
-void	init_img(t_game *game, t_img *img, char *path, char value)
+void	init_img(t_img *img, char *path, char value)
 {
-	(void)game;
 	img->bpp = 4;
-	img->img = mlx_xpm_file_to_image(game->mlx, path,
-			&(game->map.assets.size), &(game->map.assets.size));
-	img->addr = NULL;
 	img->path = path;
+	img->img = NULL;
+	img->img = NULL;
+	img->addr = NULL;
 	img->value = value;
 }
 
 void	init_assets(t_game *game)
 {
-	game->map.assets.size = 64;
-	init_img(game, &(game->map.assets.exit), "assets/wall.xpm", 'E');
-	init_img(game, &(game->map.assets.wall), "assets/wall_2.xpm", '1');
-	init_img(game, &(game->map.assets.empty), "assets/clay.xpm", '0');
-	init_img(game, &(game->map.assets.collectible), "assets/amethyst.xpm", 'C');
-	init_img(game, &(game->player.back), "assets/player_B.xpm", 'P');
-	init_img(game, &(game->player.front), "assets/player_F.xpm", 'P');
-	init_img(game, &(game->player.left), "assets/player_L.xpm", 'P');
-	init_img(game, &(game->player.right), "assets/player_R.xpm", 'P');
+	game->map.assets.size = 32;
+	init_img(&(game->map.assets.exit), "./assets/exit.xpm", 'E');
+	init_img(&(game->map.assets.wall), "./assets/wall.xpm", '1');
+	init_img(&(game->map.assets.empty), "./assets/floor.xpm", '0');
+	init_img(&(game->map.assets.collectible), "./assets/diamond.xpm", 'C');
+	init_img(&(game->player.back), "./assets/player_B.xpm", 'P');
+	init_img(&(game->player.left), "./assets/player_L.xpm", 'P');
+	init_img(&(game->player.right), "./assets/player_R.xpm", 'P');
 	game->player.value = 'P';
 	set_starting_pos(game);
 }

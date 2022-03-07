@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:03:26 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/07 14:00:34 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:21:19 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_player
 	t_img	back;
 	t_img	left;
 	t_img	right;
-	t_img	front;
 	t_pos	pos;
 }	t_player;
 
