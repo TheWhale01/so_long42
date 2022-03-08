@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:09:42 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/07 18:09:13 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/08 11:59:21 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ void	set_starting_pos(t_game *game)
 			{
 				game->player.pos.x = j * game->map.assets.size;
 				game->player.pos.y = i * game->map.assets.size;
-				break ;
 			}
+			if (game->map.map[i][j] == game->map.assets.collectible.value)
+				game->nb_collectibles++;
 		}			
 	}
 }
@@ -52,11 +53,8 @@ void	init_game(t_game *game)
 
 void	init_img(t_img *img, char *path, char value)
 {
-	img->bpp = 4;
 	img->path = path;
 	img->img = NULL;
-	img->img = NULL;
-	img->addr = NULL;
 	img->value = value;
 }
 
@@ -78,7 +76,10 @@ void	init(char *filename, t_game *game)
 {
 	int	fd;
 
+	game->nb_moves = 0;
 	game->map.width = 0;
+	game->nb_collectibles = 0;
+	game->player.nb_collectibles = 0;
 	fd = open(filename, O_RDWR | __O_NOFOLLOW);
 	if (fd == -1)
 		exit_msg(EXIT_FAILURE, "Could not open the file.", game);
@@ -87,4 +88,5 @@ void	init(char *filename, t_game *game)
 	game->map.height = tablen(game->map.map);
 	check_map(game);
 	init_game(game);
+	create_img_ptr(game);
 }

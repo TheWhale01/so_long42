@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:48:28 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/07 18:21:31 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/08 09:36:02 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 void	safe_destroy(char *str, void *mlx, void *ptr)
 {
-
 	if (!ft_strcmp(str, "window") && mlx && ptr)
 		mlx_destroy_window(mlx, ptr);
 	else if (!ft_strcmp(str, "display") && mlx)
