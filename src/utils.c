@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 16:52:27 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/07 10:58:33 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/08 12:46:52 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,19 @@ void	*free_tab(char **tab)
 int	is_in(char **tab, char c)
 {
 	int	i;
+	int	j;
+	int	count;
 
 	i = -1;
+	count = 0;
 	while (tab && tab[++i])
-		if (ft_strchr(tab[i], c))
-			return (1);
-	return (0);
+	{
+		j = -1;
+		while (tab[i][++j])
+			if (tab[i][j] == c)
+				count++;
+	}
+	return (count);
 }
 
 int	tablen(char **tab)

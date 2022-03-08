@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:09:42 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/08 11:59:21 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/08 12:38:26 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	init_game(t_game *game)
 	game->mlx_win = mlx_new_window(game->mlx,
 			game->map.assets.size * game->map.width,
 			game->map.assets.size * game->map.height, "so_long");
+	if (!game->mlx_win)
+		exit_msg(EXIT_FAILURE, "Could not render window.", game);
 }
 
 void	init_img(t_img *img, char *path, char value)
@@ -76,7 +78,7 @@ void	init(char *filename, t_game *game)
 {
 	int	fd;
 
-	game->nb_moves = 0;
+	game->nb_moves = 1;
 	game->map.width = 0;
 	game->nb_collectibles = 0;
 	game->player.nb_collectibles = 0;
@@ -84,6 +86,8 @@ void	init(char *filename, t_game *game)
 	if (fd == -1)
 		exit_msg(EXIT_FAILURE, "Could not open the file.", game);
 	store_map(fd, &(game->map));
+	if (!game->map.map)
+		exit_msg(EXIT_FAILURE, "No map in file.", game);
 	init_assets(game);
 	game->map.height = tablen(game->map.map);
 	check_map(game);
