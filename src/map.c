@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 17:19:59 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/08 18:20:31 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:47:21 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,28 @@
 #include "libft.h"
 #include "so_long.h"
 
+void	create_exit_ptr(t_game *game)
+{
+	game->player.exit_front.img = mlx_xpm_file_to_image(game->mlx,
+			game->player.exit_front.path, &(game->map.assets.size),
+			&(game->map.assets.size));
+	game->player.exit_back.img = mlx_xpm_file_to_image(game->mlx,
+			game->player.exit_back.path, &(game->map.assets.size),
+			&(game->map.assets.size));
+	game->player.exit_left.img = mlx_xpm_file_to_image(game->mlx,
+			game->player.exit_left.path, &(game->map.assets.size),
+			&(game->map.assets.size));
+	game->player.exit_right.img = mlx_xpm_file_to_image(game->mlx,
+			game->player.exit_right.path, &(game->map.assets.size),
+			&(game->map.assets.size));
+	if (!game->player.exit_back.img || !game->player.exit_left.img
+		|| !game->player.exit_right.img || !game->player.exit_front.img)
+		exit_msg(EXIT_FAILURE, "Could not load player textures.", game);
+}
+
 void	create_player_ptr(t_game *game)
 {
+	create_exit_ptr(game);
 	game->player.back.img = mlx_xpm_file_to_image(game->mlx,
 			game->player.back.path, &(game->map.assets.size),
 			&(game->map.assets.size));
@@ -26,8 +46,11 @@ void	create_player_ptr(t_game *game)
 	game->player.right.img = mlx_xpm_file_to_image(game->mlx,
 			game->player.right.path, &(game->map.assets.size),
 			&(game->map.assets.size));
+	game->player.front.img = mlx_xpm_file_to_image(game->mlx,
+			game->player.front.path, &(game->map.assets.size),
+			&(game->map.assets.size));
 	if (!game->player.back.img || !game->player.left.img
-		|| !game->player.right.img)
+		|| !game->player.right.img || !game->player.front.img)
 		exit_msg(EXIT_FAILURE, "Could not load player textures.", game);
 }
 

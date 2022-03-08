@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:48:28 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/08 09:36:02 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:47:53 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ void	free_img(t_game *game)
 	safe_destroy("image", game->mlx, game->player.back.img);
 	safe_destroy("image", game->mlx, game->player.left.img);
 	safe_destroy("image", game->mlx, game->player.right.img);
+	safe_destroy("image", game->mlx, game->player.front.img);
+	safe_destroy("image", game->mlx, game->player.exit_back.img);
+	safe_destroy("image", game->mlx, game->player.exit_left.img);
+	safe_destroy("image", game->mlx, game->player.exit_right.img);
+	safe_destroy("image", game->mlx, game->player.exit_front.img);
 	safe_destroy("image", game->mlx, game->map.assets.collectible.img);
 	safe_destroy("image", game->mlx, game->map.assets.empty.img);
 	safe_destroy("image", game->mlx, game->map.assets.exit.img);

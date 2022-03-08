@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:09:42 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/08 17:19:23 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:44:14 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,11 @@ void	init_assets(t_game *game)
 	init_img(&(game->player.back), "./assets/player_B.xpm", 'P');
 	init_img(&(game->player.left), "./assets/player_L.xpm", 'P');
 	init_img(&(game->player.right), "./assets/player_R.xpm", 'P');
+	init_img(&(game->player.front), "./assets/player_T.xpm", 'P');
+	init_img(&(game->player.exit_front), "./assets/exit_T.xpm", 'P');
+	init_img(&(game->player.exit_back), "./assets/exit_B.xpm", 'P');
+	init_img(&(game->player.exit_left), "./assets/exit_L.xpm", 'P');
+	init_img(&(game->player.exit_right), "./assets/exit_R.xpm", 'P');
 	game->player.value = 'P';
 	set_starting_pos(game);
 }

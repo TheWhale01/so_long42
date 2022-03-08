@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:03:26 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/08 17:17:38 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:43:00 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,14 @@ typedef struct s_player
 {
 	int		nb_collectibles;
 	char	value;
+	t_img	front;
 	t_img	back;
 	t_img	left;
 	t_img	right;
+	t_img	exit_front;
+	t_img	exit_back;
+	t_img	exit_left;
+	t_img	exit_right;
 	t_pos	pos;
 }	t_player;
 
