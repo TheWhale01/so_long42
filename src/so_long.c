@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 13:49:02 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/08 12:03:44 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/08 15:30:20 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,3 @@ int	do_event(int keycode, t_game *game)
 		move_right(game);
 	return (1);
 }
-
-//Up 4
-//Down 2
-//left 65361
-//right 65363

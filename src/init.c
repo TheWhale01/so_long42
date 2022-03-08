@@ -6,12 +6,11 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:09:42 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/08 12:38:26 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/08 16:15:29 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
-#include <unistd.h>
 #include <stdlib.h>
 #include "mlx.h"
 #include "libft.h"

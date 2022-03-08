@@ -24,11 +24,6 @@ $(NAME): $(OBJS)
 
 all: $(NAME)
 
-bonus: $(NAME) $(OBJS_BONUS)
-	@if [ ! -d "./$(BIN_DIR)" ]; then mkdir $(dir $@); fi
-	$(MAKE) -C $(LIBFT_DIR)
-	$(CC) $(CFLAGS) $(OBJS_BONUS) -o $(NAME_BONUS) -L ./$(LIBFT_DIR)bin/ -lft
-
 debug: CFLAGS=-Wall -Wextra -Werror -I $(INCLUDES) -g
 debug: $(NAME)
 
@@ -45,11 +40,8 @@ sanitize: $(NAME)
 
 re: fclean all
 
-re_bonus: fclean bonus
-
 re_debug: fclean debug
 
 re_sanitize: fclean sanitize
 
-.PHONY: all bonus debug clean fclean sanitize re_debug re_sanitize \
-re_bonus
+.PHONY: all debug clean fclean sanitize re re_debug re_sanitize

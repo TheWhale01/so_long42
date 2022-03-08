@@ -6,12 +6,10 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:50:41 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/08 12:24:11 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/08 16:03:08 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "mlx.h"
 #include "libft.h"
 #include "so_long.h"
