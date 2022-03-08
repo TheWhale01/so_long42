@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 17:19:59 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/08 12:44:46 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:20:31 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@ void	create_img_ptr(t_game *game)
 		exit_msg(EXIT_FAILURE, "Could not load map textures.", game);
 }
 
-void	display_img(t_game *game, t_img img, t_pos *pos)
+void	display_img(t_game *game, t_img img)
 {
 	mlx_put_image_to_window(game->mlx, game->mlx_win, img.img,
 		game->map.assets.pos.x, game->map.assets.pos.y);
-	pos->x += game->map.assets.size;
-	if (pos->x == game->map.assets.size * game->map.width)
+	game->map.assets.pos.x += game->map.assets.size;
+	if (game->map.assets.pos.x == game->map.assets.size * game->map.width)
 	{
-		pos->x = 0;
-		pos->y += game->map.assets.size;
+		game->map.assets.pos.x = 0;
+		game->map.assets.pos.y += game->map.assets.size;
 	}
 }
 
@@ -75,19 +75,15 @@ void	display_map(t_game *game)
 		while (game->map.map[i][++j])
 		{
 			if (game->map.map[i][j] == game->map.assets.wall.value)
-				display_img(game, game->map.assets.wall,
-					&(game->map.assets.pos));
+				display_img(game, game->map.assets.wall);
 			else if (game->map.map[i][j] == game->map.assets.collectible.value)
-				display_img(game, game->map.assets.collectible,
-					&(game->map.assets.pos));
+				display_img(game, game->map.assets.collectible);
 			else if (game->map.map[i][j] == game->map.assets.empty.value)
-				display_img(game, game->map.assets.empty,
-					&(game->map.assets.pos));
+				display_img(game, game->map.assets.empty);
 			else if (game->map.map[i][j] == game->map.assets.exit.value)
-				display_img(game, game->map.assets.exit,
-					&(game->map.assets.pos));
+				display_img(game, game->map.assets.exit);
 			else if (game->map.map[i][j] == game->player.value)
-				display_img(game, game->player.left, &(game->map.assets.pos));
+				display_img(game, game->player.left);
 		}
 	}
 }

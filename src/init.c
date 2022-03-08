@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:09:42 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/08 16:15:29 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/08 17:19:23 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	init_img(t_img *img, char *path, char value)
 
 void	init_assets(t_game *game)
 {
-	game->map.assets.size = 32;
+	game->map.assets.size = 64;
 	init_img(&(game->map.assets.exit), "./assets/exit.xpm", 'E');
 	init_img(&(game->map.assets.wall), "./assets/wall.xpm", '1');
 	init_img(&(game->map.assets.empty), "./assets/floor.xpm", '0');

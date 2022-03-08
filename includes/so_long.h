@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:03:26 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/08 11:59:55 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/08 17:17:38 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	store_map(int fd, t_map *map);
 void	init(char *filename, t_game *game);
 void	put_texture(t_img *img, t_game *game);
 void	check(int ac, char **av, t_game *game);
-void	display_img(t_game *game, t_img img, t_pos *pos);
 void	exit_msg(int exit_code, char *str, t_game *game);
 
 void	*free_tab(char **tab);
