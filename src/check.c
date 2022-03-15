@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:56:18 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/08 12:48:51 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/15 10:14:51 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void	check_assets(t_game *game)
 	nb_players = is_in(game->map.map, game->player.value);
 	if (!is_in(game->map.map, game->map.assets.collectible.value))
 		exit_msg(EXIT_FAILURE, "Invalid map: Missing collectibles.", game);
-	if (!is_in(game->map.map, game->map.assets.empty.value))
-		exit_msg(EXIT_FAILURE, "Invalid map: Missing floor.", game);
 	if (!is_in(game->map.map, game->map.assets.exit.value))
 		exit_msg(EXIT_FAILURE, "Invalid map: Missing exit.", game);
 	if (!is_in(game->map.map, game->map.assets.wall.value))
