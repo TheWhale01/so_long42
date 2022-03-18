@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:56:18 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/15 10:14:51 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:22:09 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ void	check(int ac, char **av, t_game *game)
 	game->map.map = NULL;
 	if (ac != 2)
 		exit_msg(EXIT_FAILURE, "Wrong number of args.", game);
-	if (!ft_strnstr(&av[1][ft_strlen(av[1]) - 4], ".ber", 4))
+	if (!ft_strcmp(&av[1][ft_strlen(av[1]) - 5], "/.ber") || !ft_strcmp(av[1], ".ber")
+		|| ft_strcmp(&av[1][ft_strlen(av[1]) - 4], ".ber"))
 		exit_msg(EXIT_FAILURE, "Invalid filename: <filename>.ber", game);
 	init(av[1], game);
 }
