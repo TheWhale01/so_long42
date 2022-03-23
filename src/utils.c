@@ -6,7 +6,7 @@
 /*   By: hubretec <hubretec@student.42.fr >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 16:52:27 by hubretec          #+#    #+#             */
-/*   Updated: 2022/03/21 09:20:08 by hubretec         ###   ########.fr       */
+/*   Updated: 2022/03/23 13:38:43 by hubretec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	exit_msg(int exit_code, char *str, t_game *game)
 {
 	if (str)
 	{
-		ft_putendl_fd("Error", STDERR);
+		if (exit_code == EXIT_FAILURE)
+			ft_putendl_fd("Error", STDERR);
 		ft_putendl_fd(str, STDERR);
 	}
 	free_game(game);
